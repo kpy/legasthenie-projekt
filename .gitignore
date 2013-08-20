@@ -1,3 +1,7 @@
 # Connection constants #
 ########################
 inc/constant.inc.php
+
+# Idea Folder #
+###############
+.idea/*
