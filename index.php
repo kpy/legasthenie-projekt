@@ -10,7 +10,7 @@
 <body>
 	<div id="mainwrapper">
 		<h1>Legasthenie-Projekt</h1>
-        <h1>Edgar</h1>
+        <h1>Edgar2</h1>
 	</div>
 </body>
 </html>
