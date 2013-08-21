@@ -16,7 +16,6 @@
 </head>
 <body>
 	<div id="mainwrapper">
-<<<<<<< HEAD
 		<div id="content">
 		<?php
 			if(!isset($_SESSION["email"])) {
@@ -40,9 +39,6 @@
 			?>
 		</p>
 		</div>
-=======
-		<h1>Legasthenie-Projekt</h1>
->>>>>>> 7713de927e641b39bcd1478ceabc07e29f3e032c
 	</div>
 </body>
 </html>
