@@ -1,5 +1,5 @@
 <?php
-	/* constant.php */
+	/* constant.inc.php */
 
 	// Verbindungsinformationen für die Datenbank
 	define("DB_HOST", "");
