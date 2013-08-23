@@ -31,6 +31,7 @@
 		?>
 		</div>
 		<h1>Test</h1>
+        <h2>Test 2</h2>
 		<div id="debug">
 			<p><b>Debug:</b></br>
 			<?php 
