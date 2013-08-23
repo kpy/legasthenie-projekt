@@ -5,7 +5,6 @@
  	error_reporting(E_ALL);
 
  	// Benötigte Dateien einbinden
-	include "constant.inc.php";
 	include "function.inc.php";
 	session_start();
 

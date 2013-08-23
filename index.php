@@ -3,7 +3,6 @@
 
 	session_start();
 	error_reporting(E_ALL);
-	include "inc/constant.inc.php";
 	include "inc/function.inc.php";
 
 ?>
@@ -31,7 +30,7 @@
 			}
 		?>
 		</div>
-		
+		<h1>Test</h1>
 		<div id="debug">
 			<p><b>Debug:</b></br>
 			<?php 
