@@ -31,6 +31,10 @@
 		?>
 		</div>
 		<h1>Willis Funktion</h1>
+        <h2>Edgar</h2>
+		<h1>Test</h1>
+        <h2>Test 2</h2>
+        <h4>Edgars Funktion2</h4>
 		<div id="debug">
 			<p><b>Debug:</b></br>
 			<?php 
