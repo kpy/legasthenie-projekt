@@ -30,7 +30,6 @@
 			}
 		?>
 		</div>
-		<h1>Test</h1>
 		<div id="debug">
 			<p><b>Debug:</b></br>
 			<?php 
