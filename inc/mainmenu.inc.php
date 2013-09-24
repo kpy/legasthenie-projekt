@@ -8,7 +8,7 @@
 	} else {
 		echo "<h3>Ihre Berechtigungen: (".count($rights).")</h3>\n";
 		echo "<ul>\n";
-		if(!is_null($r = hasRight(CREATE_USER, $rights))) echo "<li>".$r."</li>\n";
+		if(!is_null($r = hasRight(CREATE_USER, $rights))) echo "<li><a href=\"index.php?section=create_user\">".$r."</a></li>\n";
 		if(!is_null($r = hasRight(EDIT_USER, $rights))) echo "<li>".$r."</li>\n";
 		if(!is_null($r = hasRight(DELETE_USER, $rights))) echo "<li>".$r."</li>\n";
 		if(!is_null($r = hasRight(DEACTIVATE_USER, $rights))) echo "<li>".$r."</li>\n";

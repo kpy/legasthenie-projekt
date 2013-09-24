@@ -15,6 +15,13 @@
 </head>
 <body>
 	<div id="mainwrapper">
+		<div id="debug">
+			<p><b>Debug:</b></br>
+			<?php 
+				var_dump($_GET);
+			?>
+		</p>
+		</div>
 		<div id="content">
 		<?php
 			if(!isset($_SESSION["email"])) {
@@ -22,20 +29,15 @@
 			} else {
 				echo "<div id=\"logout_button\">\n<a href=\"inc/logout.inc.php\" alt=\"logout\">Logout</a>\n</div>\n";
 
-				if($_GET["section"] == "list_users") {
+				if($_GET["section"] == "create_user") {
+					include "inc/create_user_form.inc.php";
+				} elseif($_GET["section"] == "list_users") {
 					include "inc/list_users.inc.php";
 				} else {
 					include "inc/mainmenu.inc.php";
 				}
 			}
 		?>
-		</div>
-		<div id="debug">
-			<p><b>Debug:</b></br>
-			<?php 
-				var_dump($_GET);
-			?>
-		</p>
 		</div>
 	</div>
 </body>
