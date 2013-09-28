@@ -13,7 +13,7 @@
 	
 	if ($_POST["typ"] == "schueler")
 	{
-		echo "Es handelt sich um einen Schüler<br>";
+		echo "Es handelt sich um einen dasdasd Schüler<br>";
 		echo "Name: " . $_POST['name'] . "<br>";
 		echo "Vorname: " . $_POST['vorname'] . "<br>";
 		echo "Geburtsdatum: " . $_POST['geburtsdatum'] . "<br>";
