@@ -109,6 +109,7 @@
 	 * @param array $rights 	Array mit Benutzerrechten
 	 *
 	 * @return string 			Name der Berechtigung, sonst NULL
+	 * 
 	 */
 	function hasRight($id, $rights) {
 		foreach($rights as $r) {

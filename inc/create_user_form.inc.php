@@ -17,9 +17,9 @@
     <h1>Benutzer anlegen</h1>
     <fieldset id="auswahl">
     	<label>Typ: </label>
-	    <input type="radio" name="typ" value="schueler" onclick="check();" <?php if($_GET["ausgewaehlt"] == "schueler") print "checked"?>><label> Schüler</label>
-	    <input type="radio" name="typ" value="lehrer" onclick="check();" <?php if($_GET["ausgewaehlt"] == "lehrer") print "checked"?>><label> Lehrer</label>
-	    <input type="radio" name="typ" value="admin" onclick="check();" <?php if($_GET["ausgewaehlt"] == "admin") print "checked"?>><label> Administrator</label>
+	    <input type="radio" name="typ" value="schueler" onclick="checkClickedUser();" <?php if($_GET["ausgewaehlt"] == "schueler") print "checked"?>><label> Schüler</label>
+	    <input type="radio" name="typ" value="lehrer" onclick="checkClickedUser();" <?php if($_GET["ausgewaehlt"] == "lehrer") print "checked"?>><label> Lehrer</label>
+	    <input type="radio" name="typ" value="admin" onclick="checkClickedUser();" <?php if($_GET["ausgewaehlt"] == "admin") print "checked"?>><label> Administrator</label>
     </fieldset>
 <?php 
     if (($_GET["ausgewaehlt"] == "schueler") || ($_GET["ausgewaehlt"] == "lehrer") || ($_GET["ausgewaehlt"] == "admin")) {
@@ -69,7 +69,7 @@
 					}		
 			   		print "<td>";
 			   		// Rechte des eingeloggten Benutzers mit den Checkboxen anpassen
-			   		if(hasRight($row->rightID, $_SESSION['rights'])) {
+			   		if(!is_null(hasRight($row->rightID, $_SESSION['rights']))) {
 			   			print "<input type=\"checkbox\" name=\"rights\" value=\"$row->rightName\" checked>" . $row->rightName . "</input>";
 			   		} else {
 						print "<input type=\"checkbox\" name=\"rights\" value=\"$row->rightName\" disabled=\"disabled\">" . $row->rightName . "</input>";
@@ -94,7 +94,7 @@
     </fieldset>   
     <fieldset id="inputs">
     	<label>Geschlecht:</label>
-    	<select name="Geschlecht">
+    	<select name="geschlecht">
           <option value="">Bitte auswählen</option>
           <option value="M">Männlich</option>
           <option value="F">Weiblich</option>
@@ -106,7 +106,7 @@
     </fieldset>
     <fieldset id="inputs">
     	<label>Klasse:</label>
-        <input id="klasse" type="text" name="schule" placeholder="3" required>
+        <input id="klasse" type="text" name="klasse" placeholder="3" required>
     </fieldset>
 <?php 
     }   

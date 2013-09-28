@@ -6,8 +6,8 @@
 	 * Überprüft welcher RadioButton ausgewählt worden ist.
 	 * RadioButtons: 1.Schüler 2.Lehrer 3.Administrator
 	 * Ziel: Unnötige Felder beim Benutzer anlegen zu entfernen
-	 */
-	function check() {
+	*/
+	function checkClickedUser() {
 		var whichTyp = document.getElementsByName("typ");
 		var laenge = whichTyp.length;
 		for(i=0;i<laenge;i++) {
