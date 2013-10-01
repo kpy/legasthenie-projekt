@@ -10,7 +10,7 @@
 	if(!is_null($users)) {
 		echo "<ul>\n";
 		foreach($users as $u) {
-			echo "<li>".$u["Name"].", ".$u["FirstName"]."</li>\n";
+			echo "<li>".$u[1].", ".$u[2]."</li>\n";
 		}
 		echo "</ul>\n";
 	}
