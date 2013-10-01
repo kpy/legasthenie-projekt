@@ -39,9 +39,6 @@
 				}
 			}
 		?>
-
-		<!-- Willis Test -->
-		<!-- Edgars Test -->
 		</div>
 	</div>
 </body>
