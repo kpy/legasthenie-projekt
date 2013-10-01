@@ -2,9 +2,8 @@
 
 	// Create_User form s
 
-	$connection = mysql_connect(DB_HOST, DB_USER , DB_PASS)
+	$connection = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME)
 	or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
-	mysql_select_db(DB_NAME) or die ("Datenbank konnte nicht ausgewählt werden");
     
 	// GET Variable erstellen, falls noch nicht gesetzt worden ist.
 	if (!isset($_GET["typ"])) {
@@ -59,9 +58,9 @@
 		 * Es stehen nur Checkboxen zur Auswahl, derene Rechte der momentane Benutzer besitzt.
 		 */
 			$query = "SELECT rightID, rightName FROM rights";			
-			$result =  mysql_query($query) Or die("MySQL Fehler: " . mysql_error());	
+			$result =  mysqli_query($connection, $query) Or die("MySQL Fehler: " . mysqli_error());	
 			$neueZeile = 0;
-			while($row = mysql_fetch_object($result)) {
+			while($row = mysqli_fetch_object($result)) {
 			   		$neueZeile++;
 			   		if ($neueZeile == 3) {
 						print "<tr>";

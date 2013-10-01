@@ -30,11 +30,12 @@
 				include "inc/login_form.inc.php";
 			} else {
 				echo "<div id=\"logout_button\">\n<a href=\"inc/logout.inc.php\" alt=\"logout\">Logout</a>\n</div>\n";
-
-				if($_GET["section"] == "create_user") {
-					include "inc/create_user_form.inc.php";
-				} elseif($_GET["section"] == "list_users") {
-					include "inc/list_users.inc.php";
+				if(isset($_GET["section"])) {
+					if($_GET["section"] == "create_user") {
+						include "inc/create_user_form.inc.php";
+					} elseif($_GET["section"] == "list_users") {
+						include "inc/list_users.inc.php";
+					}
 				} else {
 					include "inc/mainmenu.inc.php";
 				}
