@@ -15,7 +15,7 @@
 	// Abfrage des übergeben Namens auf der Datenbank
 	// Test auf SQL-Injektion fehlt noch
 	$email = $_POST["email"];
-	$query = "SELECT ID, eMail, Password_Salt, Password_Hash FROM accounts WHERE eMail LIKE '$email' LIMIT 1";
+	$query = "SELECT ID, eMail, Password_Salt, Password_Hash FROM accounts WHERE eMail LIKE '$email' AND active = 1 LIMIT 1";
 	$result = mysqli_query($connection, $query);
 	$row = mysqli_fetch_object($result);
 	$passwordHash = crypt($_POST["password"], $row->Password_Salt);

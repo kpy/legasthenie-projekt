@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `eMail` varchar(160) NOT NULL,
   `Password_Salt` varchar(255) NOT NULL,
   `Password_Hash` char(64) NOT NULL,
+  `Active` boolean NOT NULL
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -165,11 +166,6 @@ INSERT INTO `role_rights` (`roleID`, `rightID`) VALUES
 (1, 17),
 (1, 18),
 (1, 19);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
 -- --------------------------------------------------------
 
 --
@@ -177,11 +173,23 @@ INSERT INTO `role_rights` (`roleID`, `rightID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `schueler` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(130) NOT NULL,
-  `vorname` varchar(60) NOT NULL,
-  `geburtsdatum` varchar(160) NOT NULL,
-  `geschlecht` varchar(10) NOT NULL,
-  `schule` varchar(255) NOT NULL,
-  `klasse` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `vorname` varchar(130) NOT NULL,
+  `geburtsdatum` varchar(120) NOT NULL,
+  `geschlecht` varchar(130) NOT NULL,
+  `schule` varchar(160) NOT NULL,
+  `klasse` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Daten für Tabelle `schueler`
+--
+
+INSERT INTO `schueler` (`id`, `name`, `vorname`, `geburtsdatum`, `geschlecht`, `schule`, `klasse`) VALUES
+(1, 'Moritz', 'Meier', '2012-01-18', 'Männlich', 'Paulschule', 2);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
