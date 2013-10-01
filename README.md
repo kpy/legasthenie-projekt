@@ -14,6 +14,7 @@ CHANGELOG
 -------------
 2013-10-01
 -   Benutzer anlegen eingefügt
+
 2013-08-21
 -   Funktionen hinzugefügt
 -   styles.css erweitert
