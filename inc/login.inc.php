@@ -9,16 +9,15 @@
 	session_start();
 
 	// Verbindung zur Datenbank aufbauen
-	$connection = mysql_connect(DB_HOST, DB_USER , DB_PASS)
+	$connection = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME)
 	or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
-	mysql_select_db(DB_NAME) or die ("Datenbank konnte nicht ausgewählt werden");
 	
 	// Abfrage des übergeben Namens auf der Datenbank
 	// Test auf SQL-Injektion fehlt noch
 	$email = $_POST["email"];
 	$query = "SELECT ID, eMail, Password_Salt, Password_Hash FROM accounts WHERE eMail LIKE '$email' LIMIT 1";
-	$result = mysql_query($query);
-	$row = mysql_fetch_object($result);
+	$result = mysqli_query($connection, $query);
+	$row = mysqli_fetch_object($result);
 	$passwordHash = crypt($_POST["password"], $row->Password_Salt);
 
 	// Vergleiche Passwort-Hashes

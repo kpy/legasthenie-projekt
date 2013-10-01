@@ -34,9 +34,8 @@
 	 * @return array Rechte des Benutzers
 	 */
 	function getRights($id) {
-	    $connection = mysql_connect(DB_HOST, DB_USER , DB_PASS)
+	    $connection = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME)
 	    or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
-	    mysql_select_db(DB_NAME) or die ("Datenbank konnte nicht ausgewählt werden");
 
 	    $query = "SELECT final.rightID, IF(SUM(final.hasRight)>=1, 1, 0) AS hasRight 
 	              FROM (
@@ -57,9 +56,9 @@
 	                        WHERE a.accountID = '$id')
 	                ) AS final
 	                GROUP BY final.rightID";
-	    $ret = mysql_query($query) Or die("MySQL Fehler: " . mysql_error());
+	    $ret = mysqli_query($connection, $query) Or die("MySQL Fehler: " . mysqli_error());
 
-	    while($data = mysql_fetch_assoc($ret)) $result[] = $data;
+	    $result = mysqli_fetch_all($ret);
 
 	    return $result;
 	}
@@ -72,9 +71,8 @@
 	 * @return array Rechte des Benutzers
 	 */
 	function getRightsWithName($id) {
-	    $connection = mysql_connect(DB_HOST, DB_USER , DB_PASS)
+	    $connection = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME)
 	    or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
-	    mysql_select_db(DB_NAME) or die ("Datenbank konnte nicht ausgewählt werden");
 
 	    $query = "SELECT final.rightID, final.rightName, IF(SUM(final.hasRight)>=1, 1, 0) AS hasRight FROM (
 	                (SELECT r.rightID, r.rightName, IF(SUM(counter)>=1, 1, 0) AS hasRight
@@ -95,15 +93,19 @@
 	                    AND a.accountID = '$id')
 	                ) AS final
 	            GROUP BY final.rightID";
-	    $ret = mysql_query($query) Or die("MySQL Fehler: " . mysql_error());
+	    $ret = mysqli_query($connection, $query) Or die("MySQL Fehler: " . mysqli_error());
 
-	    while($data = mysql_fetch_assoc($ret)) $result[] = $data;
+	    $result = mysqli_fetch_all($ret);
 
 	    return $result;
 	}
 
 	/**
 	 * Überprüft für einen Benutzer, ob ein bestimmtes Recht vorhanden ist
+	 * Überprüfung jetzt über den Index
+	 *		- $r[0]		=>		rightID
+	 *		- $r[1]		=>		rightName
+	 *		- $r[2]		=>		hasRight
 	 *
 	 * @param string $id 		rightID
 	 * @param array $rights 	Array mit Benutzerrechten
@@ -112,7 +114,7 @@
 	 */
 	function hasRight($id, $rights) {
 		foreach($rights as $r) {
-			if($r["rightID"] == $id && $r["hasRight"] == 1) $result = $r["rightName"];
+			if($r[0] == $id && $r[2] == 1) $result = $r[1];
 		}
 		return $result;
 	}
@@ -123,12 +125,11 @@
 	 * @return array Benutzer
 	 */
 	function getUsers() {
-	    $connection = mysql_connect(DB_HOST, DB_USER , DB_PASS)
+	    $connection = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME)
 	    or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
-	    mysql_select_db(DB_NAME) or die ("Datenbank konnte nicht ausgewählt werden");
 		$query = "SELECT * FROM accounts ORDER BY ID ASC";
-		$ret = mysql_query($query) OR die("MySQL Fehler: " . mysql_error());
-		while($data = mysql_fetch_assoc($ret)) $result[] = $data;
+		$ret = mysqli_query($connection, $query) OR die("MySQL Fehler: " . mysqli_error());
+		$result = mysqli_fetch_all($ret);
 
 	    return $result;
 	}
