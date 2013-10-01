@@ -10,8 +10,9 @@
 <html>
 <head>
 	<title>Legasthenie-Projekt</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+	<script type="text/javascript" src="js/function.js"></script>
 </head>
 <body>
 	<div id="mainwrapper">

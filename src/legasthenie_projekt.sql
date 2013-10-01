@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `eMail` varchar(160) NOT NULL,
   `Password_Salt` varchar(255) NOT NULL,
   `Password_Hash` char(64) NOT NULL,
-  `Permissions` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -41,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 -- Daten für Tabelle `accounts`
 --
 
-INSERT INTO `accounts` (`ID`, `Name`, `FirstName`, `eMail`, `Password_Salt`, `Password_Hash`, `Permissions`) VALUES
-(1, 'Admin', 'Admin', 'admin@legasthenie-projekt.dev', '$2a$13$LEu1kDNTAETVFqpFhjmIne', '$2a$13$LEu1kDNTAETVFqpFhjmIneyTR9xIKkmPGOqlV3DAfb3foWeXkaguq', 1);
+INSERT INTO `accounts` (`ID`, `Name`, `FirstName`, `eMail`, `Password_Salt`, `Password_Hash`) VALUES
+(1, 'Admin', 'Admin', 'admin', '$2a$13$LEu1kDNTAETVFqpFhjmIne', '$2a$13$LEu1kDNTAETVFqpFhjmIneyTR9xIKkmPGOqlV3DAfb3foWeXkaguq');
 
 -- --------------------------------------------------------
 
@@ -170,3 +169,19 @@ INSERT INTO `role_rights` (`roleID`, `rightID`) VALUES
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `schueler`
+--
+
+CREATE TABLE IF NOT EXISTS `schueler` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(130) NOT NULL,
+  `vorname` varchar(60) NOT NULL,
+  `geburtsdatum` varchar(160) NOT NULL,
+  `geschlecht` varchar(10) NOT NULL,
+  `schule` varchar(255) NOT NULL,
+  `klasse` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

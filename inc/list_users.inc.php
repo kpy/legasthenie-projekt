@@ -1,11 +1,12 @@
 <?php
 	/* list_users.inc.php */
-	echo "<h2>Benutzer auflisten</h2>";
 	if(is_null(hasRight(LIST_USERS, $_SESSION['rights']))) {
 	    header( 'Location: index.php' ) ;
 	}
+
 	$users = getUsers();
 
+	echo "<h2>Benutzer auflisten</h2>";
 	if(!is_null($users)) {
 		echo "<ul>\n";
 		foreach($users as $u) {
