@@ -113,6 +113,7 @@
 	 * @return string 			Name der Berechtigung, sonst NULL
 	 */
 	function hasRight($id, $rights) {
+		$result = "";
 		foreach($rights as $r) {
 			if($r[0] == $id && $r[2] == 1) $result = $r[1];
 		}

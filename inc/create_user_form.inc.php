@@ -1,7 +1,7 @@
 <?php
 
 	// Create_User form s
-
+	
 	$connection = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME)
 	or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
     
@@ -10,14 +10,43 @@
 	    $_GET["typ"] = "";
 	}
 	
+	/*
+	 * Nur Admins dürfen Lehrer und weitere Admins erstellen. Deshalb
+	 * prüfen um welchen eingeloggten User(Admin/Lehrer) es sich handelt.
+	 *
+	 */
+	// AccountID feststellen
+	$email = $_SESSION["email"];
+	$query = "SELECT ID FROM accounts WHERE eMail like '$email'";
+	$result =  mysqli_query($connection, $query) Or die("MySQL Fehler: " . mysqli_error($connection));
+	while($row = mysqli_fetch_object($result)) {
+		print $row->ID;
+		$id = $row->ID;
+	}
+	
+	// In Tabelle "account_roles" mit der AccountID abfragen um welche roleID es sich handelt
+	// roleID -> 1 = Administrator	;	roleID -> 2 = Lehrer 
+	$query = "SELECT roleID FROM account_roles WHERE accountID='$id'";
+	$result = mysqli_query($connection, $query) Or die("MySQL Fehler: " . mysqli_error($connection));
+	while ($row = mysqli_fetch_object($result)) {
+		$recht = $row->roleID;
+	}
+	print $recht;	
+	
+	/*
+	 * <?php
+	     if ($recht=="2") print "disabled=\"disabled\""?>
+	 */
 ?>
 <form class="admin" action="./inc/create_user.inc.php" method="POST">
     <h1>Benutzer anlegen</h1>
     <fieldset id="auswahl">
     	<label>Typ: </label>
 	    <input type="radio" name="typ" value="schueler" onclick="checkClickedUser();" <?php if($_GET["typ"] == "schueler") print "checked"?>><label> Schüler</label>
-	    <input type="radio" name="typ" value="lehrer" onclick="checkClickedUser();" <?php if($_GET["typ"] == "lehrer") print "checked"?>><label> Lehrer</label>
-	    <input type="radio" name="typ" value="admin" onclick="checkClickedUser();" <?php if($_GET["typ"] == "admin") print "checked"?>><label> Administrator</label>
+	    <input type="radio" name="typ" value="lehrer" onclick="checkClickedUser();" <?php if($_GET["typ"] == "lehrer") print "checked"  ?><?php
+	     if ($recht=="2") print "disabled=\"disabled\""?>><label> Lehrer</label>
+	    <input type="radio" name="typ" value="admin" onclick="checkClickedUser();" <?php if($_GET["typ"] == "admin") print "checked"?> <?php
+	     if ($recht=="2") print "disabled=\"disabled\""?>><label> Administrator</label>
     </fieldset>
 <?php 
     if (($_GET["typ"] == "schueler") || ($_GET["typ"] == "lehrer") || ($_GET["typ"] == "admin")) {
@@ -34,7 +63,7 @@
     }
 ?>
 <?php 
-    if ($_GET["typ"] == "lehrer" || $_GET["typ"] == "admin") {
+    if (($_GET["typ"] == "lehrer" || $_GET["typ"] == "admin") && $recht == "1") {
 ?>
     <fieldset id="inputs">
         <label>Passwort:</label>
@@ -44,7 +73,7 @@
         <label>Passwort wiederholen:</label>
         <input id="passwordConfirmation" type="password" name="passwordConfirmation" placeholder="Passwort wiederholen" required>
     </fieldset>
-    <fieldset>
+    <fieldset id="inputs">
         <label>eMail:</label>
         <input id="eMail" type="email" name="eMail" placeholder="eMail" required>
     </fieldset>
