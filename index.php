@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div id="mainwrapper">
-		<div id="debug">
+		<!-- <div id="debug">
 			<p><b>Debug:</b></br>
 			<?php 
 				var_dump($_GET);
@@ -24,6 +24,8 @@
 			?>
 		</p>
 		</div>
+		
+		-->
 		<div id="content">
 		<?php
 			if(!isset($_SESSION["email"])) {
