@@ -16,7 +16,8 @@ html, body {
 
 #mainwrapper {
 	width: 980px;
-	height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 	min-width: 980px;
 	margin: 0 auto;
 	background-color: #3399ff;
@@ -129,7 +130,7 @@ html, body {
     background-image: -o-linear-gradient(top, #fff, #eee);
     background-image: linear-gradient(top, #fff, #eee);  
     height: 90%;
-    width: 90%;
+    width: 800px;
     margin: 50px auto;
     padding: 30px;
     position: relative;
@@ -167,7 +168,7 @@ html, body {
   border: 0;
 }
 
-.admin #inputs input {
+.admin .inputs input {
     padding: 15px 15px 15px 30px;
     left: 50px;
     margin: 0 0 10px 0;
@@ -263,6 +264,18 @@ html, body {
     float: right;
     line-height: 35px;
     margin-left: 10px;
+}
+
+table#rechte {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid gray;
+}
+
+table#rechte input {
+  width: 15px;
+  margin-right: 10px;
 }
 
 /*--- Benutzerverwaltung --------------------------------*/
