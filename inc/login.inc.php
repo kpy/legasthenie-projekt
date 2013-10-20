@@ -1,11 +1,11 @@
- <?php
+<?php
  	/* login.inc.php */
  	
  	// Im Live-System entfernen
  	error_reporting(E_ALL);
 
  	// Benötigte Dateien einbinden
-	include "function.inc.php";
+	include "function.inc.php"; 
 	session_start();
 
 	// Verbindung zur Datenbank aufbauen
@@ -14,15 +14,15 @@
 	
 	// Abfrage des übergeben Namens auf der Datenbank
 	// Test auf SQL-Injektion fehlt noch
-	$email = $_POST["email"];
-	$query = "SELECT ID, eMail, Password_Salt, Password_Hash FROM accounts WHERE eMail LIKE '$email' AND active = 1 LIMIT 1";
+	$username = $_POST["email"];
+	$query = "SELECT ID, username, Password_Salt, Password_Hash FROM accounts WHERE username LIKE '$username' AND active = 1 LIMIT 1";
 	$result = mysqli_query($connection, $query);
 	$row = mysqli_fetch_object($result);
 	$passwordHash = crypt($_POST["password"], $row->Password_Salt);
 
 	// Vergleiche Passwort-Hashes
 	if($row->Password_Hash === $passwordHash) {
-	    $_SESSION["email"] = $email;
+	    $_SESSION["username"] = $username;
 	    $rights = getRightsWithName($row->ID);
 	    $_SESSION["rights"] = $rights;
 	    header( 'Location: ../index.php' ) ;

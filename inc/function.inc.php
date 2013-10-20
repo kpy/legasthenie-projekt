@@ -134,4 +134,35 @@
 
 	    return $result;
 	}
+	
+	/**
+	 * Gibt die ID des eingeloggten User`s zurück
+	 * 
+	 * @param string $username	Username
+	 * 
+	 * @return int	 ID
+	 */
+	function getID($username) {
+		$connectionGetID = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME) or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
+	    $sqlGetID = "SELECT ID FROM accounts WHERE username='$username';";
+	    $resultGetID= mysqli_query($connectionGetID, $sqlGetID) Or die("MySQL Fehler: " . mysqli_error($connectionGetID));
+	    $rowGetID = $resultGetID->fetch_assoc();
+	    mysqli_close($connectionGetID);
+	    return $rowGetID['ID'];
+	}
+	
+	/**
+	 * Setzt oder entzieht Berechtigungen. Vergibt oder entzieht spezielle Rechte
+	 * für Admins und Lehrer.
+	 * 
+	 * @param Int 	$accountID
+	 * @param Int	$rightID
+	 * @param Int	$adjustment ( 1 || -1 )
+	 */
+	function setAdjustment($accountID, $rightID, $adjustment) {
+		$connectionAdjust = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME) or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
+		$sqlAdjust = "INSERT INTO account_rights_adjust (accountID, rightID, adjustment) VALUES('$accountID', '$rightID', '$adjustment')";
+		mysqli_query($connectionAdjust, $sqlAdjust) Or die("MySQL Fehler: " . mysqli_error($connectionAdjust));
+		mysqli_close($connectionAdjust);
+	}
 ?>

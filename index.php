@@ -28,7 +28,7 @@
 		-->
 		<div id="content">
 		<?php
-			if(!isset($_SESSION["email"])) {
+			if(!isset($_SESSION["username"])) {
 				include "inc/login_form.inc.php";
 			} else {
 				echo "<div id=\"logout_button\">\n<a href=\"inc/logout.inc.php\" alt=\"logout\">Logout</a>\n</div>\n";

@@ -5,7 +5,7 @@
 	/*
 	 * Überprüft welcher RadioButton ausgewählt worden ist.
 	 * RadioButtons: 1.Schüler 2.Lehrer 3.Administrator
-	 * Ziel: Unnötige Felder beim Benutzer anlegen zu entfernen
+	 * Ziel: Nicht erlaubte Formularmasken beim Benutzer anlegen zu entfernen
 	*/
 	function checkClickedUser() {
 		var whichTyp = document.getElementsByName("typ");
