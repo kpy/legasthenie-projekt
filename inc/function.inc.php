@@ -136,7 +136,7 @@
 	}
 	
 	/**
-	 * Gibt die ID des eingeloggten User`s zurück
+	 * Gibt die ID eines Accounts zurück
 	 * 
 	 * @param string $username	Username
 	 * 
@@ -165,4 +165,35 @@
 		mysqli_query($connectionAdjust, $sqlAdjust) Or die("MySQL Fehler: " . mysqli_error($connectionAdjust));
 		mysqli_close($connectionAdjust);
 	}
+	
+	/**
+	 * Gibt den Typ eines Accounts zurück->Lehrer || Admin
+	 * 
+	 * @param Int	 $id
+	 * 
+	 * @return String $rowGetTyp['accountID']
+	 */
+	function getTyp($id) {
+		$connectionGetTyp = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME) or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
+		$sqlGetTyp = "SELECT accountID FROM account_roles WHERE roleID='$id';";
+		$resultGetID= mysqli_query($connectionGetTyp, $sqlGetTyp) Or die("MySQL Fehler: " . mysqli_error($connectionGetTyp));
+		$rowGetTyp = $resultGetID->fetch_assoc();
+		mysqli_close($connectionGetTyp);
+		return $rowGetTyp['accountID'];
+	}
+	
+	/**
+	 * Aktiviert oder deaktiviert einen Account
+	 * 1 = aktiveren || 0 = deaktivieren
+	 * 
+	 * @param TinyInt $tint
+	 * @param Int	$accountID
+	 */
+	function setActive($tint, $accountID) {
+		$connectionSetActive = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME) or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
+		$sqlSetActive = "UPDATE accounts SET active='$tint' WHERE id='$accountID'";
+		mysqli_query($connectionSetActive, $sqlSetActive) Or die("MySQL Fehler: " . mysqli_error($connectionSetActive));
+		mysqli_close($connectionSetActive);
+	}
+	
 ?>

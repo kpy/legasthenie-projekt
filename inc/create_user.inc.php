@@ -37,13 +37,13 @@
 	} 
 	if ($_POST["typ"] == "admin") {	
 		// SQL Statement vorbereiten
-		$sql="INSERT INTO accounts (name, firstname, Username, Password_Salt, Password_Hash)
-		VALUES('$_POST[name]','$_POST[vorname]','$_POST[username]', '$salt','$hash')";
+		$sql="INSERT INTO accounts (name, firstname, Username, Password_Salt, Password_Hash, active)
+		VALUES('$_POST[name]','$_POST[vorname]','$_POST[username]', '$salt','$hash', '1')";
 	} 
 	if ($_POST["typ"] == "lehrer") {
 		// SQL Statement vorbereiten
-		$sql="INSERT INTO accounts (name, firstname, Username, Password_Salt, Password_Hash)
-		VALUES('$_POST[name]','$_POST[vorname]','$_POST[username]', '$salt','$hash')";
+		$sql="INSERT INTO accounts (name, firstname, Username, Password_Salt, Password_Hash, active)
+		VALUES('$_POST[name]','$_POST[vorname]','$_POST[username]', '$salt','$hash', '1')";
 	} 
 	
 	// SQL Befehl($sql) ausführen bzw. neuen User in die Tabelle "accounts" eintragen
