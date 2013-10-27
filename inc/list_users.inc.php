@@ -10,6 +10,8 @@
 	// Überprüfe POST-Werte nach Aktivierung/Deaktivierungs Aufruf
 	isset($_POST['activeInt']) ? setActive($_POST['activeInt'], $_POST['activeID']) : false;
 	
+	
+	
 	// Alle Accounts aus der Datenbank in ein Array speichern
 	$users = getUsers();
 

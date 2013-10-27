@@ -27,6 +27,7 @@
 		if(!is_null($r = hasRight(REVOKE_ADMIN_RIGHTS, $rights))) echo "<li>".$r."</li>\n";
 		if(!is_null($r = hasRight(ASSIGN_ADMIN_RIGHTS, $rights))) echo "<li>".$r."</li>\n";
 		if(!is_null($r = hasRight(LIST_USERS, $rights))) echo "<li><a href=\"index.php?section=list_users\">".$r."</a></li>\n";
+		if(!is_null($r = hasRight(LIST_STUDENTS, $rights))) echo "<li><a href=\"index.php?section=list_students\">".$r."</a></li>\n";
 		echo "</ul>\n";
 	}
 ?>

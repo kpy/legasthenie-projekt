@@ -136,6 +136,22 @@
 	}
 	
 	/**
+	 * Gibt alle Schüler zurÃ¼ck
+	 *
+	 * @return array Schüler
+	 */
+	function getStudents() {
+		$connection = mysqli_connect(DB_HOST, DB_USER , DB_PASS, DB_NAME)
+		or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
+		$query = "SELECT * FROM schueler ORDER BY ID ASC";
+		$ret = mysqli_query($connection, $query) OR die("MySQL Fehler: " . mysqli_error());
+		$result = mysqli_fetch_all($ret);
+	
+		return $result;
+	}
+	
+	
+	/**
 	 * Gibt die ID eines Accounts zurück
 	 * 
 	 * @param string $username	Username

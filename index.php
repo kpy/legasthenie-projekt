@@ -37,6 +37,8 @@
 						include "inc/create_user_form.inc.php";
 					} elseif($_GET["section"] == "list_users") {
 						include "inc/list_users.inc.php";
+					} elseif ($_GET["section"] == "list_students") {
+						include "inc/list_students.inc.php";
 					}
 				} else {
 					include "inc/mainmenu.inc.php";
