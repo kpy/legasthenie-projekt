@@ -1,30 +1,33 @@
 <?php
-	/* constant.inc.php */
+    /* constant.inc.php */
 
-	// Verbindungsinformationen für die Datenbank
-	define("DB_HOST", "");
-	define("DB_USER", "");
-	define("DB_PASS", "");
-	define("DB_NAME", "");
+    // Verbindungsinformationen für die Datenbank
+    define('DB_HOST', '');
+    define('DB_USER', '');
+    define('DB_PASS', '');
+    define('DB_NAME', '');
 
-	// Berechtigungen
-	define("CREATE_USER", "1");
-	define("EDIT_USER", "2");
-	define("DELETE_USER", "3");
-	define("DEACTIVATE_USER", "4");
-	define("ACTIVATE_USER", "5");
-	define("RESET_PASSWORD", "6");
-	define("CREATE_TEST", "7");
-	define("EDIT_TEST", "8");
-	define("DELETE_TEST", "9");
-	define("DEACTIVATE_TEST", "10");
-	define("ACTIVATE_TEST", "11");
-	define("UPLOAD_PIC", "12");
-	define("DELETE_PIC", "13");
-	define("EDIT_RIGHTS", "14");
-	define("DEACTIVATE_ADMIN", "15");
-	define("ACTIVATE_ADMIN", "16");
-	define("REVOKE_ADMIN_RIGHTS", "17");
-	define("ASSIGN_ADMIN_RIGHTS", "18");
-	define("LIST_USERS", "19");
-?>
+    // Berechtigungen
+    define('CREATE_USER', '1');
+    define('EDIT_USER', '2');
+    define('DELETE_USER', '3');
+    define('DEACTIVATE_USER', '4');
+    define('ACTIVATE_USER', '5');
+    define('RESET_PASSWORD', '6');
+    define('CREATE_TEST', '7');
+    define('EDIT_TEST', '8');
+    define('DELETE_TEST', '9');
+    define('DEACTIVATE_TEST', '10');
+    define('ACTIVATE_TEST', '11');
+    define('UPLOAD_PIC', '12');
+    define('DELETE_PIC', '13');
+    define('EDIT_RIGHTS', '14');
+    define('DEACTIVATE_ADMIN', '15');
+    define('ACTIVATE_ADMIN', '16');
+    define('REVOKE_ADMIN_RIGHTS', '17');
+    define('ASSIGN_ADMIN_RIGHTS', '18');
+    define('LIST_USERS', '19');
+    define('CREATE_STUDENT', '20');
+    define('CREATE_TEACHER', '21');
+    define('CREATE_ADMIN', '22');
+    define('LIST_STUDENTS', '23');

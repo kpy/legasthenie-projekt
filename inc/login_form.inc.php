@@ -1,7 +1,5 @@
 <?php
-
 // login form
-
 ?>
 
 <form id="login" action="./inc/login.inc.php" method="POST">
