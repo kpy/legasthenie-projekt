@@ -140,11 +140,11 @@
      * @return array Benutzer
      */
     function getUser($id) {
-        $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die('Verbindung zur Datenbank konnte nicht hergestellt werden');
+        $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die('Verbindung zur Datenbank konnte nicht hergestellt werden');
         $query = "SELECT * FROM accounts WHERE ID = $id LIMIT 1";
-        $res = mysqli_query($connection, $query);
+        $res = mysqli_query($link, $query);
         $result = mysqli_fetch_array($res);
-        mysqli_close($connection);
+        mysqli_close($link);
         
         return $result;
     }
@@ -160,6 +160,22 @@
         $ret = mysqli_query($connection, $query) OR die('MySQL Fehler: ' . mysqli_error());
         $result = mysqli_fetch_all($ret);
 
+        return $result;
+    }
+    
+    /**
+     * Gibt den Schüler mit der ID $id zurück
+     * 
+     * @param int $id
+     * @return array Schüler
+     */
+    function getStudent($id) {
+        $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die('Verbindung zur Datenbank konnte nicht hergestellt werden');
+        $query = "SELECT * FROM schueler WHERE ID = $id LIMIT 1";
+        $res = mysqli_query($link, $query) or die('MySQL Fehler: ' . mysqli_error());
+        $result = mysqli_fetch_array($res);
+        mysqli_close($link);
+        
         return $result;
     }
 
@@ -232,6 +248,18 @@
     function deleteUser($id) {
         $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die('Verbindung zur Datenbank konnte nicht hergestellt werden');
         $query = "DELETE FROM accounts WHERE ID = '$id'";
+        mysqli_query($link, $query) or die('MySQL Fehler: ' . mysqli_error($link));
+        mysqli_close($link);
+    }
+    
+    /**
+     * LÖscht den Schüler mit der ID $id
+     * 
+     * @param int $id
+     */
+    function deleteStudent($id) {
+        $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die('Verbindung zur Datenbank konnte nicht hergestellt werden');
+        $query = "DELETE FROM schueler WHERE id = '$id'";
         mysqli_query($link, $query) or die('MySQL Fehler: ' . mysqli_error($link));
         mysqli_close($link);
     }

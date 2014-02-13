@@ -53,6 +53,8 @@
                                 include 'inc/list_students.inc.php';
                             } elseif (filter_input(INPUT_GET, 'section') == 'delete_user') {
                                 include 'inc/delete_user.inc.php';
+                            } elseif (filter_input(INPUT_GET, 'section') == 'delete_student') {
+                                include 'inc/delete_student.inc.php';
                             }
                         } else {
                             include 'inc/mainmenu.inc.php';

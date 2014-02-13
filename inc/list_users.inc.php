@@ -9,7 +9,7 @@
     // Überprüfe POST-Werte nach Aktivierung/Deaktivierungs Aufruf
     isset($_POST['activeInt']) ? setActive(filter_input(INPUT_POST, 'activeInt'), filter_input(INPUT_POST, 'activeID')) : false;
     
-    // Überprüfe POST-Werte nach löschen eines Benutzers
+    // Überprüfe POST-Werte nach Löschen eines Benutzers
     isset($_POST['deleteID']) ? deleteUser(filter_input(INPUT_POST, 'deleteID')) : false;
 
 

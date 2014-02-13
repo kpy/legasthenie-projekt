@@ -9,7 +9,7 @@
     
     !isset($_POST['id']) ? header('Location: index.php?section=list_users') : false;
     
-    $user = getUser(filter_input(INPUT_POST, 'id'));
+    $student = getUser(filter_input(INPUT_POST, 'id'));
     
 //    var_dump($user);
     
@@ -20,22 +20,22 @@
 
 <table>
     <?php
-        $user['active'] == 1 ? $act = 'Ja' : $act = 'Nein';
+        $student['active'] == 1 ? $act = 'Ja' : $act = 'Nein';
         echo '<tr>'
                 . '<td>ID:</td>'
-                . '<td>' . $user['ID'] . '</td>'
+                . '<td>' . $student['ID'] . '</td>'
             . '</tr>'
             . '<tr>'
                 . '<td>Name:</td>'
-                . '<td>' . $user['Name'] . '</td>'
+                . '<td>' . $student['Name'] . '</td>'
             . '</tr>'
             . '<tr>'
                 . '<td>Vorname:</td>'
-                . '<td>' . $user['FirstName'] . '</td>'
+                . '<td>' . $student['FirstName'] . '</td>'
             . '</tr>'
             . '<tr>'
                 . '<td>Benutzername:</td>'
-                . '<td>' . $user['username'] . '</td>'
+                . '<td>' . $student['username'] . '</td>'
             . '</tr>'
             . '<tr>'
                 . '<td>Aktiv:</td>'
@@ -49,7 +49,7 @@
         echo '<tr>'
                 . '<td>'
                     . '<form method="post" action="index.php?section=list_users">'
-                    . '<input type="hidden" name="deleteID" value="' . $user['ID'] . '">'
+                    . '<input type="hidden" name="deleteID" value="' . $student['ID'] . '">'
                     . '<input type="submit" value="Ja" id="submit">'
                     . '</form>'
                 . '</td>'
