@@ -48,7 +48,7 @@
             echo '<li>' . $r . ' (Zusatz)</li>';
         }
         if (!is_null($r = hasRight(EDIT_RIGHTS, $rights))) {
-            echo '<li>' . $r . ' (noch nicht implmentiert)</li>';
+            echo '<li>' . $r . ' (noch nicht implementiert)</li>';
         }
         if (!is_null($r = hasRight(DEACTIVATE_ADMIN, $rights))) {
             echo '<li>' . $r . ' (nicht sicher, ob implementiert)</li>';
@@ -66,13 +66,13 @@
             echo '<li><a href="index.php?section=list_users">' . $r . '</a></li>';
         }
         if (!is_null($r = hasRight(CREATE_STUDENT, $rights))) {
-            echo '<li>' . $r . ' (noch nicht implementiert)</li>';
+            echo '<li>' . $r . ' (in Benutzer anlegen)</li>';
         }
         if (!is_null($r = hasRight(CREATE_TEACHER, $rights))) {
-            echo '<li>' . $r . ' (noch nicht implementiert)</li>';
+            echo '<li>' . $r . ' (in Benutzer anlegen)</li>';
         }
         if (!is_null($r = hasRight(CREATE_ADMIN, $rights))) {
-            echo '<li>' . $r . ' (noch nicht implementiert)</li>';
+            echo '<li>' . $r . ' (in Benutzer anlegen)</li>';
         }
         if (!is_null($r = hasRight(LIST_STUDENTS, $rights))) {
             echo '<li><a href="index.php?section=list_students">' . $r . '</a></li>';

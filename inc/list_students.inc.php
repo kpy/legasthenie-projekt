@@ -40,7 +40,7 @@
             . '<td>' . $u[5] . '</td>'
             . '<td>' . $u[6] . '</td>'
             . '<td>'
-                . '<form name="input" action="edit_student_page.html" method="post">'
+                . '<form name="input" action="index.php?section=edit_student" method="post">'
                     . '<input type="hidden" name="id" value="' . $u[0] . '">'
                     . '<input type="submit" value="Bearbeiten" id="submit">'
                 . '</form>'

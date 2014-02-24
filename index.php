@@ -16,7 +16,7 @@
     <body>
         <div id="mainwrapper">
             
-            <div id="debug">
+            <!-- <div id="debug">
                     <p><b>Debug:</b></br>
             <?php
                 echo 'GET-Variable: ';
@@ -29,7 +29,7 @@
                 isset($_SESSION['rights']) ? var_dump($_SESSION['rights']) : print 'Keine Rechte in der Session gespeichert';
             ?>
             </p>
-            </div>
+            </div> -->
             
             <div id="content">
                 <?php
@@ -55,6 +55,10 @@
                                 include 'inc/delete_user.inc.php';
                             } elseif (filter_input(INPUT_GET, 'section') == 'delete_student') {
                                 include 'inc/delete_student.inc.php';
+                            } elseif (filter_input(INPUT_GET, 'section') == 'edit_user') {
+                                include 'inc/edit_user.inc.php';
+                            } elseif (filter_input(INPUT_GET, 'section') == 'edit_student') {
+                                include 'inc/edit_student.inc.php';
                             }
                         } else {
                             include 'inc/mainmenu.inc.php';

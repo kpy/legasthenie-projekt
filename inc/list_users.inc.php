@@ -11,7 +11,11 @@
     
     // Überprüfe POST-Werte nach Löschen eines Benutzers
     isset($_POST['deleteID']) ? deleteUser(filter_input(INPUT_POST, 'deleteID')) : false;
-
+    
+    // Überprüfe POST-Werte nach Bearbeiten eines Benutzers
+    if($_POST['change']) {
+        isset($_POST['editID']) ? changeUser(filter_input(INPUT_POST, 'editID'), filter_input(INPUT_POST, 'name'), filter_input(INPUT_POST, 'firstname'), filter_input(INPUT_POST, 'username')) : false;
+    }
 
 
     // Alle Accounts aus der Datenbank in ein Array speichern
@@ -61,7 +65,7 @@
             . '<td>' . $typ . '</td>'
             . '<td>' . $active . '</td>'
             . '<td>'
-                    . '<form name="input" action="edit_user_page.php" method="post">'
+                    . '<form name="input" action="index.php?section=edit_user" method="post">'
                         . '<input type="hidden" name="id" value="' . $u[0] . '">'
                         . '<input type="submit" value="Bearbeiten" id="submit">'
                     . '</form>'

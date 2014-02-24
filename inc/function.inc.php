@@ -253,7 +253,7 @@
     }
     
     /**
-     * LÖscht den Schüler mit der ID $id
+     * Löscht den Schüler mit der ID $id
      * 
      * @param int $id
      */
@@ -261,5 +261,20 @@
         $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die('Verbindung zur Datenbank konnte nicht hergestellt werden');
         $query = "DELETE FROM schueler WHERE id = '$id'";
         mysqli_query($link, $query) or die('MySQL Fehler: ' . mysqli_error($link));
+        mysqli_close($link);
+    }
+    
+    /**
+     * Setzt an der entsprechenden Stelle (id) in der Datenbank die Werte Name, Vorname und Benutzername neu
+     * 
+     * @param int $id
+     * @param String $name
+     * @param String $firstname
+     * @param String $username
+     */
+    function changeUser($id, $name, $firstname, $username) {
+        $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die('Verbindung zur Datenbank konnte nicht hergestellt werden');
+        $query = "UPDATE accounts SET Name='$name', FirstName='$firstname', username='$username' WHERE ID='$id'";
+        mysqli_query($link, $query);
         mysqli_close($link);
     }
