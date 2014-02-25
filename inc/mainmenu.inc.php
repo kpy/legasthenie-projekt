@@ -77,5 +77,6 @@
         if (!is_null($r = hasRight(LIST_STUDENTS, $rights))) {
             echo '<li><a href="index.php?section=list_students">' . $r . '</a></li>';
         }
+        echo '<li><a href="index.php?section=test1">Test 1 starten</a></li>';
         echo '</ul>';
     }

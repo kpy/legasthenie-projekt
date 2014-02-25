@@ -59,6 +59,8 @@
                                 include 'inc/edit_user.inc.php';
                             } elseif (filter_input(INPUT_GET, 'section') == 'edit_student') {
                                 include 'inc/edit_student.inc.php';
+                            } elseif (filter_input(INPUT_GET, 'section') == 'test1') {
+                                include 'test/test1.inc.php';
                             }
                         } else {
                             include 'inc/mainmenu.inc.php';
